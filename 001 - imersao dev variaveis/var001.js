@@ -16,3 +16,6 @@ var notaFinal = (notaPrimeiroBimestre + notaSegundoBimestre + notaTerceiroBimest
 var notaFinal = notaFinal.toFixed(1);
 
 console.log(notaFinal);
+
+
+// Link primeira aula ( https://codepen.io/danilojduarte/pen/wvjBEvE?editors=0011  )
