@@ -1,5 +1,5 @@
 var carta1 = {
-  nome : "Bulbasauro",
+  nome: "Bulbasauro",
   atributos: {
     ataque: 7,
     defesa: 8,
@@ -8,20 +8,20 @@ var carta1 = {
 };
 
 var carta2 = {
-  nome : "Vegeta",
+  nome: "Darth Vader",
   atributos: {
-    ataque: 10,
-    defesa: 6,
-    magia: 8
+    ataque: 9,
+    defesa: 8,
+    magia: 2
   }
 };
 
 var carta3 = {
-  nome : "Shiryu de Dragão",
+  nome: "Shiryu de dragão",
   atributos: {
-    ataque: 9,
-    defesa: 5,
-    magia: 8
+    ataque: 5,
+    defesa: 9,
+    magia: 10
   }
 };
 
@@ -32,50 +32,56 @@ var cartaJogador;
 function sortearCarta() {
   var numeroCartaMaquina = parseInt(Math.random() * 3);
   cartaMaquina = cartas[numeroCartaMaquina];
-  
+
   var numeroCartaJogador = parseInt(Math.random() * 3);
   while (numeroCartaMaquina == numeroCartaJogador) {
-    var numeroCartaJogador = parseInt(Math.random() * 3);
+    numeroCartaJogador = parseInt(Math.random() * 3);
   }
   cartaJogador = cartas[numeroCartaJogador];
   console.log(cartaJogador);
-  
+
   document.getElementById("btnSortear").disabled = true;
   document.getElementById("btnJogar").disabled = false;
-  
-  exibirOpcoes()
+
+  exibirOpcoes();
 }
 
 function exibirOpcoes() {
   var opcoes = document.getElementById("opcoes");
-  var opcoesTexto = ""
-  
-  for  (var atributo in cartaJogador.atributos) {
-    opcoesTexto += "<input type='radio' 'name=atributo' 'value='" + atributo + "'>" + atributo;
+  var opcoesTexto = "";
+
+  for (var atributo in cartaJogador.atributos) {
+    opcoesTexto +=
+      "<input type='radio' name='atributo' value='" +
+      atributo +
+      "'>" +
+      atributo;
   }
-  opcoes.innerHTML = opcoesTexto
+  opcoes.innerHTML = opcoesTexto;
 }
 
 function obtemAtributoSelecionado() {
-  var radioAtributo = document.getElementByName = ("atributo");
-  for ( var i = 0; i < radioAtributo.length; i++) {
-    if (radioAtributo[i].checked == true) {
-      return radioAtributo[i].value
+  var radioAtributos = document.getElementsByName("atributo");
+
+  for (var i = 0; i < radioAtributos.length; i++) {
+    if (radioAtributos[i].checked == true) {
+      return radioAtributos[i].value;
     }
   }
 }
 
-
-// Verificar Motivo do valor ter retornado *undefined* Verificar em atributos
-
 function jogar() {
-  var atributoSelecionado = obtemAtributoSelecionado()
-  console.log(atributoSelecionado)
+  var atributoSelecionado = obtemAtributoSelecionado();
+  var elementoResultado = document.getElementById("resultado");
+  var valorCartaJogador = cartaJogador.atributos[atributoSelecionado];
+  var valorCartaMaquina = cartaMaquina.atributos[atributoSelecionado];
+
+  if (valorCartaJogador > valorCartaMaquina) {
+    elementoResultado.innerHTML = "Você venceu";
+  } else if (valorCartaMaquina > valorCartaJogador) {
+    elementoResultado.innerHTML = "Você perdeu, a carta da máquina é maior";
+  } else {
+    elementoResultado.innerHTML = "Empatou";
+  }
+  console.log(cartaMaquina);
 }
-
-
-
-
-// Anotações :
-// Como conseguir visualizar um valor especifico
-// console.log(carta1.atributos.ataque);
