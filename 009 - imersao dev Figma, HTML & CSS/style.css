@@ -13,9 +13,13 @@ body {
   padding: 64px;
 }
 
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+}
+
 .perfil {
   display:flex;
-  align-items: center;
 }
 
 .perfil-img {
@@ -29,12 +33,12 @@ body {
 }
 
 .titulo h1 {
-  font-weigh: 700;
+  font-weight: 700;
   font-size: 36px;
 }
 
 .titulo h3 {
-  font-weigh: 400;
+  font-weight: 400;
   font-size: 24px;
 }
 
@@ -48,6 +52,16 @@ body {
   border-radius: 20px;
 }
 
+.tema button {
+    align-self: flex-end;
+    font-size: 16px;
+    padding: 8px 16px;
+    background: #ECF4FF;
+    box-sizing: border-box;
+    border-radius: 100px;
+    border: 2px solid #0E1D2F;
+    cursor: pointer;
+}
 .projetos-titulos{
   list-style: none;
   font-weight: 700;
@@ -63,4 +77,23 @@ body {
 .projeto-item a {
   color: 1c1c1c;
   text-decoration: none;
+}
+
+.dark {
+  background: linear-gradient(236,85deg, #375B86 27.26%, #6B87A9 96.03%);
+}
+
+.dark .container {
+  background: #333439;
+  color: #f6f6f6;
+}
+
+.dark .projetos {
+  color: #1c1c1c;
+}
+
+.dark .tema button {
+  background: #1c1c1c;
+  color: #fff;
+  border: 2px solid #f7f7f7;
 }
